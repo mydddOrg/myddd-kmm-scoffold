@@ -28,6 +28,8 @@ KMM是一个业务逻辑跨平台移动端解决方案，有自身独特的优�
 * SQLDelight 插件
 * Kotlin Multiplatform Mobile 插件
 
+而对于iOS开发，进入iosApp目录，使用XCode打开就可以了
+
 ## 下一步计划
 
 这是一个验证了KMM基本可行性的一个示例，包括了网络与数据库。但基于myddd的理念，下一步将会进一步验证以下方面的理念：
