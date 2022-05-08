@@ -1,0 +1,27 @@
+
+
+CREATE TABLE Blog (
+    slug TEXT PRIMARY KEY NOT NULL,
+    date TEXT NOT NULL,
+    title TEXT NOT NULL,
+    brief TEXT NOT NULL,
+    created INTEGER
+);
+
+CREATE TABLE Launch (
+    flightNumber INTEGER NOT NULL,
+    missionName TEXT NOT NULL,
+    launchYear INTEGER AS Int NOT NULL DEFAULT 0,
+    rocketId TEXT NOT NULL,
+    details TEXT,
+    launchSuccess INTEGER AS Boolean DEFAULT NULL,
+    launchDateUTC TEXT NOT NULL,
+    missionPatchUrl TEXT,
+    articleUrl TEXT
+);
+
+insertBlog:
+INSERT OR REPLACE INTO Blog VALUES ?;
+
+removeAllBlog:
+DELETE FROM Blog;
