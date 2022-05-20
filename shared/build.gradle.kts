@@ -80,6 +80,7 @@ android {
         minSdkVersion(21)
         targetSdkVersion(30)
     }
+    namespace = "com.jetbrains.handson.android"
 }
 
 sqldelight {
