@@ -9,7 +9,7 @@ class BlogSDK (databaseDriverFactory: DatabaseDriverFactory) {
     private val database = Database(databaseDriverFactory)
     private val api = BlogNet()
 
-    @Throws(Exception::class) suspend fun getBlogs(forceReload: Boolean):List<BlogDTO>{
+    @Throws(Exception::class) suspend fun getBlogs():List<BlogDTO>{
         return api.getAllBlogs().also {
             database.clearDatabase()
             database.batchSaveBlogs(it)
