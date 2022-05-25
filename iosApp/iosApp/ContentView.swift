@@ -48,7 +48,7 @@ extension ContentView {
 
         func loadBlogs(forceReload: Bool) {
             self.status = .loading
-            sdk.getBlogs(forceReload: forceReload, completionHandler: { blogs, error in
+            sdk.getBlogs(completionHandler: { blogs, error in
                 if let blogs = blogs {
                     self.status = .result(blogs)
                 } else {
