@@ -29,14 +29,13 @@ class MainActivity : AppCompatActivity() {
     fun MainListViewStateful(blogViewModel: BlogViewModel = BlogViewModel(this)){
         val scope = rememberCoroutineScope()
 
-        if(blogViewModel.blogs.isEmpty()){
-            LaunchedEffect(blogViewModel.blogs) {
+        LaunchedEffect(blogViewModel.blogs) {
+            if(blogViewModel.blogs.isEmpty()){
                 scope.launch {
                     blogViewModel.fetchBlogs()
                 }
             }
         }
-
         LazyColumn {
             items(blogViewModel.blogs, key = { blog -> blog.slug }) { blog ->
                 BlogItemView(blogDTO = blog)

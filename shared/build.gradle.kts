@@ -13,17 +13,13 @@ version = "1.0-SNAPSHOT"
 kotlin {
     android()
 
-    val iosTarget: (String, KotlinNativeTarget.() -> Unit) -> KotlinNativeTarget =
-        if (System.getenv("SDK_NAME")?.startsWith("iphoneos") == true)
-            ::iosSimulatorArm64
-        else
-            ::iosSimulatorArm64
-
-    iosTarget("ios") {
-        binaries {
-            framework {
-                baseName = "shared"
-            }
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach {
+        it.binaries.framework {
+            baseName = "shared"
         }
     }
 
@@ -55,6 +51,7 @@ kotlin {
             dependencies {
                 implementation("io.ktor:ktor-client-okhttp:$ktorVersion")
                 implementation("com.squareup.sqldelight:android-driver:$sqlDelightVersion")
+
             }
         }
         val androidTest by getting {
@@ -63,13 +60,19 @@ kotlin {
                 implementation("junit:junit:4.13.2")
             }
         }
-        val iosMain by getting {
+        val iosX64Main by getting
+        val iosArm64Main by getting
+        val iosSimulatorArm64Main by getting
+        val iosMain by creating {
+            dependsOn(commonMain)
+            iosX64Main.dependsOn(this)
+            iosArm64Main.dependsOn(this)
+            iosSimulatorArm64Main.dependsOn(this)
             dependencies {
                 implementation("io.ktor:ktor-client-darwin:$ktorVersion")
                 implementation("com.squareup.sqldelight:native-driver:$sqlDelightVersion")
             }
         }
-        val iosTest by getting
     }
 }
 

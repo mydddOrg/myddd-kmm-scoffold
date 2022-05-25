@@ -14,10 +14,10 @@ dependencies {
     implementation("androidx.activity:activity-compose:1.4.0")
 
     //添加Jetpack Compose依赖
-    implementation("androidx.compose.ui:ui:${composeVersion}")
-    implementation("androidx.compose.ui:ui-tooling:${composeVersion}")
-    implementation("androidx.compose.foundation:foundation:${composeVersion}")
-    implementation("androidx.compose.material:material:${composeVersion}")
+    implementation("androidx.compose.ui:ui:$composeVersion")
+    implementation("androidx.compose.ui:ui-tooling:$composeVersion")
+    implementation("androidx.compose.foundation:foundation:$composeVersion")
+    implementation("androidx.compose.material:material:$composeVersion")
 
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.1.1")
 }
@@ -53,7 +53,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.1.1"
+        kotlinCompilerExtensionVersion = composeVersion
     }
 }
 
